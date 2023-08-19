@@ -8,8 +8,10 @@ conn = sqlite3.connect(':memory:')
 # create a cursor
 c = conn.cursor()
 
+path = r"C:\Users\Patryk\OneDrive\Dokumenty\GitHub\RDP-Reading-Data-with-Python-and-Pandas\unit-1-reading-data-with-python-and-pandas\lesson-14-crypto-currency-database\files\cryptos.sql"
+
 # restore the given cryptos.sql dump
-c.executescript(open('cryptos.sql', 'r').read())
+c.executescript(open(path, 'r').read())
 
 crypto_df = pd.read_sql('''SELECT cryptocoins_cryptocurrency.name AS coin_name, cryptocoins_exchange.name AS exchange, symbol, price_usd, percent_change_7d
                             FROM cryptocoins_cryptocurrency
